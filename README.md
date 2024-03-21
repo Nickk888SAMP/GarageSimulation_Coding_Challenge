@@ -1,3 +1,5 @@
+<img src="/preview.png" width="400">
+
 This Project was made for a Coding Challenge given by a company as a entry test.
 This Project is my response to the challenge. It consists of all the features and even a little more like some methods to get some more informations.
 
