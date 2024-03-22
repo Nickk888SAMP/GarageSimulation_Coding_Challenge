@@ -5,7 +5,7 @@ namespace GarageSimulation_Codingchallenge.Classes
 {
     public class GarageFloor
     {
-        public List<ParkingSpot> ParkingSpaces { get; private set; } = null;
+        public List<ParkingSpot> ParkingSpots { get; private set; } = null;
         public int ParkingSpaceCapacity { get; private set; }
         public int ParkingFloorNumber { get; private set; }
 
@@ -13,20 +13,20 @@ namespace GarageSimulation_Codingchallenge.Classes
         {
             ParkingSpaceCapacity = parkingSpaceCapacity;
             ParkingFloorNumber = floorNumber;
-            ParkingSpaces = new List<ParkingSpot>(ParkingSpaceCapacity);
+            ParkingSpots = new List<ParkingSpot>(ParkingSpaceCapacity);
             for (int i = 0; i < ParkingSpaceCapacity; i++)
             {
-                ParkingSpaces.Add(new ParkingSpot(this, i));
+                ParkingSpots.Add(new ParkingSpot(this, i));
             }
         }
 
-        public bool ParkingSpaceAvailable() => ParkingSpaces.FirstOrDefault(i => !i.IsOccupied()) != null ? true : false;
-        public ParkingSpot GetFreeParkingSpot() => ParkingSpaces.FirstOrDefault(i => !i.IsOccupied());
-        public int CountFreeParkingSpots() => ParkingSpaces.Where(i => !i.IsOccupied()).Count();
-        public int CountOccupiedParkingSpots() => ParkingSpaces.Where(i => i.IsOccupied()).Count();
+        public bool ParkingSpaceAvailable() => GetFreeParkingSpot() != null ? true : false;
+        public ParkingSpot GetFreeParkingSpot() => ParkingSpots.FirstOrDefault(i => !i.IsOccupied());
+        public int CountFreeParkingSpots() => ParkingSpots.Where(i => !i.IsOccupied()).Count();
+        public int CountOccupiedParkingSpots() => ParkingSpots.Where(i => i.IsOccupied()).Count();
         public bool GetVehicleByLicensePlate(string licensePlate, out VehicleBase vehicle, out GarageFloor floor, out ParkingSpot parkingSpace)
         {
-            foreach (var space in ParkingSpaces)
+            foreach (var space in ParkingSpots)
             {
                 if(!space.IsOccupied())
                     continue;
