@@ -20,7 +20,7 @@ namespace GarageSimulation_Codingchallenge.Classes
             }
         }
 
-        public bool ParkingSpaceAvailable() => GetFreeParkingSpot() != null ? true : false;
+        public bool ParkingSpaceAvailable() => GetFreeParkingSpot() != null;
         public ParkingSpot GetFreeParkingSpot() => ParkingSpots.FirstOrDefault(i => !i.IsOccupied());
         public int CountFreeParkingSpots() => ParkingSpots.Where(i => !i.IsOccupied()).Count();
         public int CountOccupiedParkingSpots() => ParkingSpots.Where(i => i.IsOccupied()).Count();
